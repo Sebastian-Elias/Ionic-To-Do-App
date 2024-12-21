@@ -1,0 +1,7 @@
+{
+  "name": "crud-to-do-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
