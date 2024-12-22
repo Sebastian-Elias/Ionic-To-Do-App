@@ -1,0 +1,35 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <!-- Título y bienvenida -->
+        <div class="welcome-container">
+          <h1 class="page-title">Bienvenido/a</h1>
+          <p class="welcome-message">Por favor ingresa tus credenciales para continuar</p>
+        </div>
+
+        <!-- Formulario de inicio de sesión -->
+        <form (ngSubmit)="login()" #loginForm="ngForm">
+          <div class="form-field">
+            <label for="email">Correo Electrónico</label>
+            <ion-input [(ngModel)]="email" name="email" type="email" placeholder="Email" required></ion-input>
+          </div>
+
+          <div class="form-field">
+            <label for="password">Contraseña</label>
+            <ion-input [(ngModel)]="password" name="password" type="password" placeholder="Contraseña" required></ion-input>
+          </div>
+
+          <ion-button expand="full" (click)="login()">
+            Iniciar Sesión
+          </ion-button>
+        </form>
+
+        <!-- Botón para registrarse -->
+        <ion-button expand="full" color="light" (click)="goToRegister()">
+          Registrarse
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

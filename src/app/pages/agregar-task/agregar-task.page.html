@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Tarea</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Título</ion-label>
+      <ion-input type="text" [(ngModel)]="newTask.title" placeholder="Título de la tarea"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Descripción</ion-label>
+      <ion-textarea [(ngModel)]="newTask.description" placeholder="Descripción de la tarea"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Foto</ion-label>
+      
+      <div style="display: flex; align-items: center;">
+        <!-- Botón para tomar una foto con la cámara -->
+        <ion-button color="secondary" (click)="takePhoto()">
+          <ion-icon slot="start" name="camera"></ion-icon> Tomar Foto
+        </ion-button>
+      </div>
+
+      <!-- Mostrar mensaje de error si la imagen es demasiado grande -->
+      <div *ngIf="errorMessage" class="error-message">
+        <p>{{ errorMessage }}</p>
+      </div>
+
+      <div *ngIf="newTask.photo" style="margin-top: 8px;">
+        <img [src]="newTask.photo" alt="Preview" style="max-width: 100%; height: auto;" />
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Ubicación</ion-label>
+      <div style="display: flex; justify-content: flex-end; align-items: center;">
+        <ion-button color="secondary" (click)="findLocation()">Encontrar</ion-button>
+      </div>
+      <div *ngIf="newTask.location" style="margin-top: 8px;">
+        <strong>Latitud:</strong> {{ newTask.location.lat }} <br />
+        <strong>Longitud:</strong> {{ newTask.location.lng }}
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" color="primary" (click)="addTask()">
+    Crear Tarea
+  </ion-button>
+
+  <!-- Botón para cancelar y regresar a la vista anterior -->
+  <ion-button expand="full" color="danger" (click)="onCancel()">
+    Cancelar
+  </ion-button>
+
+</ion-content>

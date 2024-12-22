@@ -22,5 +22,16 @@
 <body>
   <app-root></app-root>
 </body>
-
+<script>
+  (function() {
+    if (typeof globalThis === 'undefined') {
+      Object.defineProperty(Object.prototype, 'globalThis', {
+        get: function() {
+          return this;
+        },
+        configurable: true
+      });
+    }
+  })();
+</script>
 </html>

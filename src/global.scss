@@ -35,3 +35,7 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+ion-content {
+    padding-left: 16px; /* Ajuste de margen a la izquierda */
+    padding-right: 16px; /* Ajuste de margen a la derecha */
+  }
