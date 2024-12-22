@@ -17,7 +17,10 @@ export class AuthService {
   private apiUrl = 'https://6764634552b2a7619f5c6ccb.mockapi.io/api/v1/auth';
   private loggedIn = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    const user = localStorage.getItem('user');
+    this.loggedIn.next(!!user); // Se marca como autenticado si hay un usuario en el localStorage
+  }
 
   // Obtener el estado de autenticación
   isLoggedIn() {
@@ -57,7 +60,6 @@ export class AuthService {
         console.log('Usuario autenticado:', user);
         this.loggedIn.next(true);
         localStorage.setItem('user', JSON.stringify(user));
-        this.router.navigate(['/listar-task']);
         console.log('Navegación exitosa a /listar-task');
       } else {
         console.error('Credenciales incorrectas');
